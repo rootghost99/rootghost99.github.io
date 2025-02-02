@@ -21,6 +21,18 @@ ul {
             list-style-position: inside;
         }
   </style>
+  <style>
+        /* Prevent link preview in the status bar */
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
   <div class="header" style="text-align:left;">
@@ -58,9 +70,25 @@ ul {
     </div>
 <p>
 <p>
-<video width="640" height="360" autoplay controls>
-        <source src="https://github.com/rootghost99/rootghost99.github.io/raw/refs/heads/main/videoplayback.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+<a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" 
+       onclick="window.location.href='https://www.youtube.com/watch?v=xvFZjo5PgG0'; return false;" 
+       title="Check out a word from our CEO, Mike!">
+       Check out a word from our CEO, Mike!
+    </a>
+
+    <script>
+        // Prevent the actual URL from showing in the status bar on hover
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('mouseover', function(event) {
+                window.status = 'Check out a word from our CEO, Mike';
+                return true;
+            });
+
+            link.addEventListener('mouseout', function(event) {
+                window.status = '';
+                return true;
+            });
+        });
+    </script>
 </body>
 </html>
