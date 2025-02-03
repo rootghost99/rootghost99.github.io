@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>eGroup Enabling Technologies - Phishing Simulation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            padding: 15px;
+            text-align: center; /* Centered */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header h3 {
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Content Section */
+        .container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .jumbotron {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tips Section */
+        .tip-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .tip-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .tip-card h2 {
+            font-size: 22px;
+            color: #2a5298;
+        }
+
+        .tip-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        /* Call-to-Action */
+        .cta {
+            font-weight: 600;
+            color: #ef5350;
+        }
+
+        /* Meme Section */
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        /* Audio Controls */
+        .mute-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #ef5350;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none; /* Show only when audio is playing */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hidden Audio (Initially Paused) -->
+    <audio id="rickRoll" loop>
+        <source src="https://www.myinstants.com/media/sounds/rick-roll.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Header Section -->
+    <div class="header">
+        <img src="https://www.egroup-us.com/wp-content/uploads/2024/10/eGroup-ET-Blue-and-White-no-Tagline-1.png" alt="eGroup Logo">
+        <h3>Unfortunately... you've been phished by the MSSP Team 😈</h3>
+    </div>
+
+    <!-- Content Section -->
+    <div class="container">
+        <div class="jumbotron">
+            <h2>🎣 Hook, Line & Sinker!</h2>
+            <h3>We're so sorry about the above joke... too much coffee and late nights. ☕️</h3>
+        </div>
+
+        <div class="row mt-4">
+            <!-- Tip #1 -->
+            <div class="col-md-4 mb-4">
+                <div class="tip-card">
+                    <h2>🛑 Stop, Look, Think</h2>
+                    <p>Does anything seem odd? Is the email address legit or just similar?</p>
+                    <pre><p class="cta">MSSP Team &lt;it@<span style="color: red;">egroup.com</span>&gt;</p></pre>
+                </div>
+            </div>
+
+            <!-- Tip #2 -->
+            <div class="col-md-4 mb-4">
+                <div class="tip-card">
+                    <h2>🚩 Spot the Red Flags</h2>
+                    <ul>
+                        <li>📌 Suspicious Sender Email</li>
+                        <li>⚡ Urgency or Threats (GIFT CARDS?!)</li>
+                        <li>📎 Unsolicited Attachments or Links</li>
+                        <li>❌ Spelling/Grammar Errors (Less likely w/ AI 🤖)</li>
+                        <li>🎁 "Too Good to Be True!" Offers</li>
+                        <li>👋 Generic Greetings</li>
+                        <li>🔑 Requests for Personal Info</li>
+                        <li>🧐 Unusual Behavior or Requests</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tip #3 -->
+            <div class="col-md-4 mb-4">
+                <div class="tip-card">
+                    <h2>🗑️ When in Doubt, Throw it Out</h2>
+                    <p>If an email feels suspicious, play it safe. Hit the Outlook <span class="cta">"REPORT"</span> button!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Funny Meme -->
+        <div class="gif-container">
+            <img src="https://i.imgflip.com/5bj7o4.gif" alt="Funny phishing meme">
+        </div>
+
+        <!-- Mute Button -->
+        <button id="muteButton" class="mute-btn">🔇 Mute Sound</button>
+    </div>
+
+    <script>
+        // Audio Control
+        let audio = document.getElementById("rickRoll");
+        let muteBtn = document.getElementById("muteButton");
+
+        // Start audio when the user interacts with the page
+        function enableAudio() {
+            audio.play().then(() => {
+                muteBtn.style.display = "block";
+            }).catch(error => {
+                console.log("Autoplay blocked, waiting for user interaction...");
+            });
+
+            // Remove event listener after first interaction
+            document.removeEventListener("click", enableAudio);
+        }
+
+        // Check if autoplay was blocked by the browser
+        document.addEventListener("DOMContentLoaded", function () {
+            if (audio.paused) {
+                document.addEventListener("click", enableAudio);
+            }
+        });
+
+        // Mute / Unmute Function
+        muteBtn.addEventListener("click", function () {
+            if (audio.muted) {
+                audio.muted = false;
+                muteBtn.innerHTML = "🔇 Mute Sound";
+            } else {
+                audio.muted = true;
+                muteBtn.innerHTML = "🔊 Unmute Sound";
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
